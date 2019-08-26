@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LevelConstants;
 
 public class scr_unit_base : MonoBehaviour
 {
     private string unit_name = "snuffles";
     private float unit_speed = 1.5f;
     private bool selected = false;
-    float CLICK_RANGE = 0.2f; 
+    float CLICK_RANGE = 0.3f;
+    float STOP_AT = 0.1f; 
     private bool moving = false;
     
     private float start_time; 
@@ -41,10 +43,15 @@ public class scr_unit_base : MonoBehaviour
                 if(!moving){
                     start_time = Time.time;
                     target_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    target_pos.y = transform.position.y;
+                    
+                    //target_pos.y = Input.mousePosition;
                     starting_pos = transform.position;
                     moving = true;
                     selected = false;
+
+                    if(target_pos.y >= TestLevelData.Y_LIMIT_U || target_pos.y <= TestLevelData.Y_LIMIT_D){
+                        moving = false;
+                    }
                 }
 
             }
@@ -65,8 +72,7 @@ public class scr_unit_base : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
-            if(target_pos.x >= (transform.position.x - CLICK_RANGE/2) && target_pos.x <= (transform.position.x + CLICK_RANGE/2)){
-                Debug.Log("Reached");
+            if(target_pos.x >= (transform.position.x - STOP_AT) && target_pos.x <= (transform.position.x + STOP_AT)){
                 moving = false;
             }
         }
