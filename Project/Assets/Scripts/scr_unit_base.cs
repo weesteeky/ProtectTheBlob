@@ -15,11 +15,12 @@ public class scr_unit_base : MonoBehaviour
     private float start_time; 
     private Vector2 target_pos;
     private Vector2 starting_pos;
-
+    private Vector2 dimensions;
+    public SpriteRenderer selectedSprite; 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dimensions = new Vector2(GetComponent<SpriteRenderer>().bounds.size.x,GetComponent<SpriteRenderer>().bounds.size.y);
     }
 
     // Update is called once per frame
@@ -78,7 +79,10 @@ public class scr_unit_base : MonoBehaviour
         }
 
         if(selected){
-            // draw rect
+            selectedSprite.enabled= true;
+        }
+        else{
+            selectedSprite.enabled= false;
         }
     }
 }
