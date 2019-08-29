@@ -16,7 +16,9 @@ public class scr_unit_base : MonoBehaviour
     private Vector2 target_pos;
     private Vector2 starting_pos;
     private Vector2 dimensions;
+
     public SpriteRenderer selectedSprite; 
+    public GameObject targetCursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,9 @@ public class scr_unit_base : MonoBehaviour
 
                     if(target_pos.y >= TestLevelData.Y_LIMIT_U || target_pos.y <= TestLevelData.Y_LIMIT_D){
                         moving = false;
+                    }
+                    else{
+                        Instantiate(targetCursor,target_pos, transform.rotation);
                     }
                 }
 

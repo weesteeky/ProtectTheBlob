@@ -15,7 +15,7 @@ public class scr_cloud_alpha : MonoBehaviour
         tmp.a = Random.Range(25.0f,50.0f)/100;
         GetComponent<SpriteRenderer>().color = tmp;
         starting_pos = transform.position;
-        target_pos = new Vector2(100.0f, transform.position.y);
+        target_pos = new Vector2(10.0f, transform.position.y);
         start_time = Time.time;
     }
 
@@ -30,7 +30,7 @@ public class scr_cloud_alpha : MonoBehaviour
             transform.position = Vector3.Lerp(starting_pos, target_pos, frac_journey);
         }
         else{
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
