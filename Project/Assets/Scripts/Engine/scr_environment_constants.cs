@@ -9,6 +9,7 @@ namespace LevelConstants{
         public static float Y_LIMIT_D = -1.22f;
         public static float X_LIMIT_L = 32;
         public static float X_LIMIT_R = 32;
+        public static float E_TARGET_L = -6;
     }
 
 }
